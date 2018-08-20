@@ -1,0 +1,8 @@
+.leaflet-container {
+    height: 400px;
+    width: 100%;
+  }
+
+  .leaflet-default-icon-path {
+    background-image: url(/images/marker-icon.png);
+  }
