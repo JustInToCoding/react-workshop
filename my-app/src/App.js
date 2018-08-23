@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import WeatherContainer from './weather/weather-container';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 class App extends Component {
 
