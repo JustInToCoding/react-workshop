@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import WeatherContainer from './weather/weather-container';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {
 
@@ -16,7 +17,13 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <WeatherContainer></WeatherContainer>
+        <Router>
+          <Switch>
+            <Route path="/" component={WeatherContainer} />
+            <Route path="/:location" component={WeatherContainer} />
+          </Switch>
+        </Router>
+        
       </div>
     );
   }

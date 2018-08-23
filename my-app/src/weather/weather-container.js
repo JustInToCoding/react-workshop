@@ -6,6 +6,7 @@ class WeatherContainer extends Component {
 
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       location: null,
       temperature: null
@@ -28,9 +29,15 @@ class WeatherContainer extends Component {
         return result.json();
       })
       .then(json => {
-        let temperature = json.main.temp;
-        this.setState({...this.state, temperature: temperature});
-      });
+        if(json.cod === 200) {
+          let temperature = json.main.temp;
+          this.setState({...this.state, temperature: temperature});
+        } else if (json.cod === 404) {
+          // Display place not found message
+        }
+        
+      })
+      .catch(console.error);
   }
 
   componentDidMount() {
