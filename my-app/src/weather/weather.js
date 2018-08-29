@@ -29,7 +29,7 @@ class Weather extends Component {
           <input type="text" value={this.state.inputLocation} onChange={this.handleChange} onKeyPress={this.handleLocationSubmit} />
         </div>
         <p className="App-intro">
-          The temperature in {this.props.location} is: {this.props.temperature}.
+          The temperature in {this.props.location} is: {this.props.temperature}C.
         </p>
         {this.props.children}
       </div>

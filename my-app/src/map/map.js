@@ -11,18 +11,15 @@ import leaflet from 'leaflet';
 class LeafletMap extends Component {
   icon;
 
-    state = {
-        lat: 51.505,
-        lng: -0.09,
-        zoom: 13,
-        hasLocation: false
-    };
+  state = {
+      zoom: 13,
+      hasLocation: false
+  };
 
-    mapRef = createRef();
+  mapRef = createRef();
 
   constructor(props) {
     super(props);
-    console.log(leaflet.Icon.Default.prototype.options);
     this.icon = leaflet.icon({
       iconUrl: markerIcon,
       shadowUrl: markerShadow,
@@ -37,22 +34,19 @@ class LeafletMap extends Component {
     });
   }
 
-  handleClick = () => {
-    this.mapRef.current.leafletElement.locate();
+  handleClick = e => {
+    this.props.onLocationFound(e.latlng);
   }
 
+  // Call this after map has leafletElement exists to find current location: this.mapRef.current.leafletElement.locate();
   handleLocationFound = e => {
-      console.log(e);
-    this.setState({
-      hasLocation: true,
-      latlng: e.latlng,
-    })
+    this.props.onLocationFound(e.latlng);
   }
 
   render() {
-    const position = [this.state.lat, this.state.lng];
+    const position = [this.props.lat, this.props.lon];
     return (
-        <div className="map">
+      <div className="map">
         <Map 
             center={position} 
             zoom={this.state.zoom} 
@@ -70,7 +64,7 @@ class LeafletMap extends Component {
                 </Popup>
             </Marker>
         </Map>
-        </div>
+      </div>
     );
   }
 

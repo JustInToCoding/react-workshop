@@ -19,8 +19,8 @@ class App extends Component {
         </header>
         <Router>
           <Switch>
-            <Route path="/" component={WeatherContainer} />
-            <Route path="/:location" component={WeatherContainer} />
+            <Route path="/" exact={true} component={WeatherContainer} />
+            <Route path="/:location" exact={true} component={WeatherContainer} />
           </Switch>
         </Router>
         
